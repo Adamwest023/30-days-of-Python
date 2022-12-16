@@ -14,7 +14,7 @@ password = os.getenv("PASSWORD")
 
 def send_mail(text="Email body", subject="Hello, world!",
                from_email='Adam <adamsboggusacct@gmail.com>',
-               to_emails=None,):
+               to_emails=None,html=None):
     assert isinstance(to_emails, list)
     
     msg = MIMEMultipart('alternative')
@@ -24,8 +24,9 @@ def send_mail(text="Email body", subject="Hello, world!",
     
     txt_part = MIMEText(text,'plain')
     msg.attach(txt_part)
-    html_part = MIMEText("<h1>This is working</h1>",'html')
-    # msg.attach(html_part)
+    if html != None:
+        html_part = MIMEText(html,'html')
+        msg.attach(html_part)
     
     msg_str = msg.as_string()
     

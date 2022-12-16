@@ -2,22 +2,24 @@ import sys
 import requests
 from datetime import datetime
 from formatting import format_msg
+from send_mail import send_mail
 
 
-def send(name, website=None, verbose=False):
+def send(name, website=None, to_email=None, verbose=False):
+    assert to_email != None
     if website != None:
         msg = format_msg(my_name=name, my_website=website)
     else:
         msg = format_msg(my_name=name)
     if verbose:
-        print(name,website)
+        print(name, website, to_email)
     # send the message
-    r = requests.get("http://httpbin.org/json")
-    if r.status_code == 200:
-        return r.json()
-    else:
-        return "Error"
-    return msg
+    try:
+        send_mail(text=msg, to_emails=[to_email], html=None)
+        sent = True
+    except:
+        sent = False
+    return sent
 
 
 if __name__ == "__main__":
@@ -25,5 +27,8 @@ if __name__ == "__main__":
     name = "Unknown"
     if len(sys.argv) > 1:
         name = sys.argv[1]
-    response = send(name,verbose=True)
+    email = None
+    if len(sys.argv) > 2:
+        email = sys.argv[2]
+    response = send(name, to_email=email, verbose=True)
     print(response)
