@@ -20,3 +20,7 @@ class Animal:
         
 class Wolf(Animal):
     noise = "grrr"
+    
+
+class BabyWolf(Wolf):
+    color = "yellow"
