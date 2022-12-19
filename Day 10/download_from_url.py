@@ -1,6 +1,7 @@
 import os
 import requests
 import shutil
+from download_util import download_file
 
 THIS_FILE_PATH = os.path.abspath(__file__)
 BASE_DIR = os.path.dirname(THIS_FILE_PATH)
@@ -24,3 +25,6 @@ new_dl_path = os.path.join(DOWNLOAD_DIR, dl_filename)
 with requests.get(url, stream=True)as r:
     with open(downloaded_img_path, 'wb') as file_obj:
         shutil.copyfileobj(r.raw, file_obj)
+
+
+download_file(url, DOWNLOAD_DIR)
