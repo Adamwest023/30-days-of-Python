@@ -34,6 +34,7 @@ def parse_and_extract(url, name="2022"):
     r_table = r_html.find(table_class)
 
     table_data = []
+    # table_data_dicts =[]
     header_names = []
 
     if len(r_table) == 0:
@@ -47,11 +48,16 @@ def parse_and_extract(url, name="2022"):
         # print(row.text)
         cols = row.find("td")
         row_data = []
+        # row_dict_data = {}
         for i, col in enumerate(cols):
             # print(i, col.text, '\n\n')
+            header_name = header_names[i]
+            # row_dict_data[header_name]= col.text
             row_data.append(col.text)
+        # table_data_dicts.append(row_dict_data)   
         table_data.append(row_data)
     df = pd.DataFrame(table_data, columns=header_names)
+    # df = pd.DataFrame(table_data_dicts)
     path = os.path.join(BASE_DIR, 'data')
     os.makedirs(path, exist_ok=True)
     filepath = os.path.join('data', f'{name}.csv')
