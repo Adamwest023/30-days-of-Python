@@ -2,26 +2,40 @@ import os
 import requests
 from dotenv import load_dotenv
 
-#Environmental variables
+# Environmental variables
 load_dotenv()
 
-api_key =os.getenv("MOVIEDB_API_KEY")
+api_key = os.getenv("MOVIEDB_API_KEY")
+api_key_v4 = os.getenv("MOVIEDB_API_KEY_V4")
+# HTTP Requests METHODS
 
-# HTTP Requests METHODS 
-  
-# Endpoint 
+# Endpoint
 """
 GET
 /movie/{movie_id}
 https://api.themoviedb.org/3/movie/{movie_id}?api_key=api_key
 """
-movie_id = 500 
-api_version = 3 
+# movie_id = 501
+# api_version = 3
+# api_base_url = f"https://api.themoviedb.org/{api_version}"
+# endpoint_path = f"/movie/{movie_id}"
+# endpoint = f"{api_base_url}{endpoint_path}?api_key={api_key}"
+# print(endpoint)
+# r = requests.get(endpoint)
+# print(r.status_code)
+# print(r.text)
+
+#using v4
+movie_id = 501
+api_version = 4
 api_base_url = f"https://api.themoviedb.org/{api_version}"
 endpoint_path = f"/movie/{movie_id}"
 endpoint = f"{api_base_url}{endpoint_path}?api_key={api_key}"
-print(endpoint)
-r = requests.get(endpoint)
+headers= {
+    'Authorization': f'Bearer {api_key_v4}',
+    'Content-Type': 'application/json;charset=utf-8'
+}
+r = requests.get(endpoint, headers=headers)
 print(r.status_code)
 print(r.text)
 
