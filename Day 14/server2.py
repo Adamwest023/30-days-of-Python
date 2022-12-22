@@ -1,4 +1,4 @@
-# running a web server with Fastapi
+# running a web application with Fastapi
 from fastapi import FastAPI
 
 app = FastAPI()

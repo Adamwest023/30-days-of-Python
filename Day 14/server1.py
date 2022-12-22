@@ -1,4 +1,4 @@
-#creating a server with Flask 
+# running a web application with Flask 
 from flask import Flask
 
 
