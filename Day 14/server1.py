@@ -15,8 +15,9 @@ def hello_world():
 def abc_view():
     return ("Hello ABC. This is Flask!")
 
-@app.route("/box-office-mojo-scraper", methods=["GET"])
+#scraper route
+@app.route("/box-office-mojo-scraper", methods=["POST"])
 def box_office_mojo_scraper_world():
     scrape_runner()
-    return "Done!"
+    return {"data":[1,2,3]}
     
