@@ -1,5 +1,8 @@
 # running a web application with Fastapi
+import os
+import datetime
 from fastapi import FastAPI
+from logger import trigger_log_save
 from scrape import run as scrape_runner
 
 app = FastAPI()
@@ -15,6 +18,7 @@ def abc_view():
 #scraper route
 @app.post("/box-office-mojo-scraper")
 def scrape_runner_view():
+    trigger_log_save()
     scrape_runner()
     return {"data": [1,2,3]}
 
