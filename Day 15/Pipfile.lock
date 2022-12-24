@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c70e2b407e133f5b998d5b9d3d1c4bb7c87899ab952f862eb68315f42b8c83ef"
+            "sha256": "8be4e6b71f0ef0a72032f2fa16ee11e17fe2242b6cd6fbea5d9ad8ea1df84043"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -105,7 +105,7 @@
                 "sha256:f9168790149f917ad8e3cf5047b353fefef753bd50b07c547da0bdf30bc15d91",
                 "sha256:fe44e925c68fb5e8db1334bf30ac1a1b6b963b932a19cf41d2e899cf02f36aab"
             ],
-            "markers": "python_version != '2.7'",
+            "markers": "python_version >= '2.7'",
             "version": "==1.24.0"
         },
         "pillow": {
@@ -172,7 +172,7 @@
                 "sha256:ebf2029c1f464c59b8bdbe5143c79fa2045a581ac53679733d3a91d400ff9efb",
                 "sha256:f1ff2ee69f10f13a9596480335f406dd1f70c3650349e2be67ca3139280cade0"
             ],
-            "markers": "python_version >= '3.7'",
+            "index": "pypi",
             "version": "==9.3.0"
         },
         "proglog": {
